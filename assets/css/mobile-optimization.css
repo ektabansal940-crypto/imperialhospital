@@ -3069,3 +3069,479 @@
     }
 
 }
+
+
+
+
+
+
+
+
+/* ================================================================
+   MOBILE OPTIMIZATION IMPROVEMENT PATCH
+   Home + Other Pages
+   Add at the VERY BOTTOM of mobile-optimization.css
+   ================================================================ */
+
+@media screen and (max-width: 767px) {
+
+    /* ============================================================
+       1. GLOBAL MOBILE BASICS
+       ============================================================ */
+
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box !important;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    .elementor-container,
+    .e-con,
+    .elementor-widget-wrap {
+        max-width: 100% !important;
+    }
+
+
+    /* ============================================================
+       2. HOME PAGE
+       ============================================================ */
+
+    /* Main Home sections - controlled spacing */
+    body.home .elementor-section.elementor-top-section,
+    body.elementor-page-871 .elementor-section.elementor-top-section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+
+    /* ------------------------------------------------------------
+       HOME - Read More / About section
+       ------------------------------------------------------------ */
+
+    body.home .elementor-element-dfd9b3c,
+    body.elementor-page-871 .elementor-element-dfd9b3c {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 25px !important;
+        padding-bottom: 25px !important;
+    }
+
+    body.home .elementor-element-dfd9b3c .elementor-widget-button,
+    body.elementor-page-871 .elementor-element-dfd9b3c .elementor-widget-button {
+        margin-top: 15px !important;
+        margin-bottom: 0 !important;
+    }
+
+
+    /* ------------------------------------------------------------
+       HOME - Statistics section
+       ------------------------------------------------------------ */
+
+    body.home .elementor-element-503ce95,
+    body.elementor-page-871 .elementor-element-503ce95 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding: 20px 16px !important;
+    }
+
+    /* Statistics grid */
+    body.home .elementor-element-3775082,
+    body.elementor-page-871 .elementor-element-3775082 {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* Individual statistic boxes */
+    body.home .elementor-element-3775082 > .elementor-element,
+    body.elementor-page-871 .elementor-element-3775082 > .elementor-element {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* Statistics content */
+    body.home .elementor-element-3775082 .elementor-widget,
+    body.elementor-page-871 .elementor-element-3775082 .elementor-widget {
+        margin-bottom: 0 !important;
+    }
+
+
+    /* ------------------------------------------------------------
+       HOME - Section after statistics
+       Prevent unnecessary white gap
+       ------------------------------------------------------------ */
+
+    body.home .elementor-element-3f924fb,
+    body.elementor-page-871 .elementor-element-3f924fb {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-top: 35px !important;
+    }
+
+
+    /* ------------------------------------------------------------
+       HOME - General widget spacing
+       ------------------------------------------------------------ */
+
+    body.home .elementor-widget,
+    body.elementor-page-871 .elementor-widget {
+        margin-bottom: 15px !important;
+    }
+
+    body.home .elementor-widget:last-child,
+    body.elementor-page-871 .elementor-widget:last-child {
+        margin-bottom: 0 !important;
+    }
+
+
+    /* ------------------------------------------------------------
+       HOME - Buttons
+       ------------------------------------------------------------ */
+
+    body.home .elementor-button,
+    body.elementor-page-871 .elementor-button {
+        min-height: 42px !important;
+        padding: 11px 20px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    /* ============================================================
+       3. ALL OTHER PAGES - MAIN SECTION SPACING
+       ============================================================ */
+
+    body:not(.home) .elementor-section.elementor-top-section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    body:not(.home) .elementor-section.elementor-top-section
+    > .elementor-container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+
+    /* ============================================================
+       4. SERVICES PAGE
+       ============================================================ */
+
+    body.elementor-page-8 .elementor-element-0ff9b64 {
+        padding: 30px 20px 35px !important;
+        margin: 0 !important;
+    }
+
+    /* Service rows */
+    body.elementor-page-8 .elementor-element-0ff9b64
+    .elementor-inner-section {
+        margin: 0 0 25px !important;
+        padding: 0 !important;
+    }
+
+    /* Service columns */
+    body.elementor-page-8 .elementor-element-0ff9b64
+    .elementor-inner-column {
+        margin: 0 0 25px !important;
+        padding: 0 !important;
+    }
+
+    /* Service images */
+    body.elementor-page-8 .elementor-element-0ff9b64
+    .elementor-widget-image {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.elementor-page-8 .elementor-element-0ff9b64
+    .elementor-widget-image img {
+        width: 100% !important;
+        height: 300px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block !important;
+    }
+
+    /* Blue service card */
+    body.elementor-page-8 .elementor-element-0ff9b64
+    .elementor-widget-wpr-promo-box {
+        width: calc(100% - 24px) !important;
+        margin: -25px 12px 0 !important;
+        position: relative !important;
+        z-index: 5 !important;
+    }
+
+    body.elementor-page-8 .wpr-promo-box-content {
+        padding: 20px 18px !important;
+    }
+
+    body.elementor-page-8 .wpr-promo-box-title {
+        margin-bottom: 8px !important;
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+    }
+
+    body.elementor-page-8 .wpr-promo-box-description {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 0 !important;
+    }
+
+
+    /* ============================================================
+       5. ABOUT PAGE
+       ============================================================ */
+
+    body.elementor-page-6 .elementor-widget-heading,
+    body.elementor-page-6 .elementor-widget-text-editor {
+        margin-bottom: 15px !important;
+    }
+
+    body.elementor-page-6 .elementor-widget-image img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+    }
+
+
+    /* ============================================================
+       6. APPOINTMENT PAGE
+       ============================================================ */
+
+    body.elementor-page-10 .elementor-widget-heading {
+        margin-bottom: 15px !important;
+    }
+
+    body.elementor-page-10 input,
+    body.elementor-page-10 select,
+    body.elementor-page-10 textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 44px !important;
+    }
+
+    body.elementor-page-10 textarea {
+        min-height: 120px !important;
+    }
+
+    body.elementor-page-10 .elementor-button {
+        min-height: 44px !important;
+        width: 100% !important;
+    }
+
+
+    /* ============================================================
+       7. DOCTORS PAGE
+       ============================================================ */
+
+    body.elementor-page-12 .elementor-widget-image img,
+    body.elementor-page-13 .elementor-widget-image img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+    }
+
+    body.elementor-page-12 .elementor-widget,
+    body.elementor-page-13 .elementor-widget {
+        margin-bottom: 15px !important;
+    }
+
+
+    /* ============================================================
+       8. BLOG LISTING
+       ============================================================ */
+
+    body.blog .elementor-post,
+    body.archive .elementor-post {
+        width: 100% !important;
+        margin-bottom: 25px !important;
+    }
+
+    body.blog .elementor-post__thumbnail img,
+    body.archive .elementor-post__thumbnail img {
+        width: 100% !important;
+        height: 220px !important;
+        object-fit: cover !important;
+    }
+
+    body.blog .elementor-post__title,
+    body.archive .elementor-post__title {
+        font-size: 20px !important;
+        line-height: 1.35 !important;
+    }
+
+    body.blog .elementor-post__excerpt,
+    body.archive .elementor-post__excerpt {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+
+    /* ============================================================
+       9. CONTACT PAGE
+       ============================================================ */
+
+    /* Map should stay full-width — NO mobile padding */
+    body.elementor-page-14 .elementor-widget-google_maps,
+    body.elementor-page-14 .elementor-widget-google_maps .elementor-widget-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.elementor-page-14 iframe {
+        width: 100% !important;
+        min-height: 300px !important;
+        display: block !important;
+    }
+
+
+    /* ============================================================
+       10. TYPOGRAPHY
+       ============================================================ */
+
+    h1 {
+        font-size: 28px !important;
+        line-height: 1.25 !important;
+    }
+
+    h2 {
+        font-size: 23px !important;
+        line-height: 1.3 !important;
+    }
+
+    h3 {
+        font-size: 19px !important;
+        line-height: 1.35 !important;
+    }
+
+    p,
+    li {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+
+    /* ============================================================
+       11. FOOTER
+       ============================================================ */
+
+    footer,
+    .elementor-location-footer {
+        overflow: hidden !important;
+    }
+
+    .elementor-location-footer p,
+    .elementor-location-footer li,
+    .elementor-location-footer a {
+        line-height: 1.6 !important;
+    }
+
+
+    /* ============================================================
+       12. FLOATING BUTTONS
+       ============================================================ */
+
+    .floating-buttons,
+    .floating-buttons-container {
+        max-width: 100% !important;
+    }
+
+    .floating-buttons a,
+    .floating-buttons button {
+        min-width: 42px !important;
+        min-height: 42px !important;
+    }
+}
+
+
+/* ================================================================
+   SMALL PHONES
+   ================================================================ */
+
+@media screen and (max-width: 480px) {
+
+    body.home .elementor-element-3775082,
+    body.elementor-page-871 .elementor-element-3775082 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    body.home .elementor-element-503ce95,
+    body.elementor-page-871 .elementor-element-503ce95 {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    body.elementor-page-8 .elementor-element-0ff9b64
+    .elementor-widget-image img {
+        height: 260px !important;
+    }
+
+    body.elementor-page-8 .wpr-promo-box-content {
+        padding: 18px 15px !important;
+    }
+
+    body.elementor-page-8 .wpr-promo-box-title {
+        font-size: 18px !important;
+    }
+
+    h1 {
+        font-size: 25px !important;
+    }
+
+    h2 {
+        font-size: 21px !important;
+    }
+
+    h3 {
+        font-size: 18px !important;
+    }
+
+    p,
+    li {
+        font-size: 14px !important;
+    }
+}
+
+
+/* ================================================================
+   TABLET
+   ================================================================ */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    html,
+    body {
+        overflow-x: hidden !important;
+    }
+
+    .elementor-section.elementor-top-section {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+
+    body.elementor-page-8 .elementor-widget-image img {
+        height: 360px !important;
+        object-fit: cover !important;
+    }
+
+    body.elementor-page-8 .elementor-widget-wpr-promo-box {
+        margin-top: -30px !important;
+    }
+}

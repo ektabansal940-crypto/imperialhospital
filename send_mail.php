@@ -24,7 +24,7 @@ $mailer = new SimpleSMTPMailer(__DIR__ . '/.env');
 
 $to_email = $_ENV['MAIL_TO_EMAIL'] ?? getenv('MAIL_TO_EMAIL') ?: 'rb887087@gmail.com';
 $site_name = $_ENV['SMTP_FROM_NAME'] ?? getenv('SMTP_FROM_NAME') ?: 'Imperial Hospital & Trauma Centre';
-$from_email = $_ENV['SMTP_FROM_EMAIL'] ?? getenv('SMTP_FROM_EMAIL') ?: 'no-reply@imperialhospital.local';
+$from_email = $_ENV['SMTP_FROM_EMAIL'] ?? getenv('SMTP_FROM_EMAIL') ?: 'cozmohpixeltech4@gmail.com';
 
 // ---------------------------------------------------------
 // PARSE SUBMISSION DATA
