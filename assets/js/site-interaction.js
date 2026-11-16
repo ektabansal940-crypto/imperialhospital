@@ -314,12 +314,36 @@ document.addEventListener('click', function(e) {
     }
 });
 
-        // 2. Mobile Submenu Toggle (e.g. Doctors dropdown and Specialty submenus)
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.wpr-mobile-nav-menu, .wpr-mobile-nav-menu-container, .wpr-mobile-toggle-wrap, .wpr-mobile-toggle')) {
+        var menu = document.querySelector('.wpr-mobile-nav-menu.wpr-menu-open, .wpr-mobile-nav-menu[style*="display: block"]');
+        if (menu) {
+            menu.classList.remove('wpr-menu-open', 'active');
+            menu.style.display = 'none';
+            document.querySelectorAll('.wpr-active-toggle').forEach(function(t) {
+                t.classList.remove('wpr-active-toggle');
+            });
+            document.body.classList.remove('wpr-mobile-menu-active');
+        }
+    }
+});
+
+// Floating Scroll-To-Top Button Click
+document.addEventListener('click', function(e) {
+    var stt = e.target.closest('.wpr-stt-btn, .elementor-element-bbca014');
+    if (stt) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+
+        // 2. Mobile Submenu Toggle (e.g. Doctors dropdown)
         document.addEventListener('click', function(e) {
             var itemWithChildren = e.target.closest('.wpr-mobile-nav-menu .menu-item-has-children > a');
             if (itemWithChildren) {
                 var parentLi = itemWithChildren.closest('.menu-item-has-children');
-                var subMenu = itemWithChildren.nextElementSibling || (parentLi ? (parentLi.querySelector(':scope > .sub-menu, :scope > .wpr-sub-menu') || parentLi.querySelector('.sub-menu, .wpr-sub-menu')) : null);
+                var subMenu = parentLi ? parentLi.querySelector('.sub-menu, .wpr-sub-menu') : itemWithChildren.nextElementSibling;
                 if (subMenu) {
                     e.preventDefault();
                     e.stopPropagation();
