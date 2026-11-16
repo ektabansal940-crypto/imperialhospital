@@ -202,6 +202,32 @@
     }
 
     // ------------------------------------------------------------------
+    // Local Filesystem Navigation Fix (file:// protocol)
+    // When opening pages locally via file://, directory URLs (e.g. 'dr-ajay-kenia/')
+    // show the browser's directory index listing ("Index of...") with index.html.
+    // This intercepts clicks and routes directly to that page's index.html file
+    // in a single click, eliminating the intermediate directory listing.
+    // On web servers (http/https), directory links remain clean without .html.
+    // ------------------------------------------------------------------
+    document.addEventListener('click', function(e) {
+        if (window.location.protocol === 'file:') {
+            var link = e.target.closest('a[href]');
+            if (link) {
+                var href = link.getAttribute('href');
+                if (href && !href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('javascript:')) {
+                    if (href === './') {
+                        e.preventDefault();
+                        window.location.href = 'index.html';
+                    } else if (href.endsWith('/')) {
+                        e.preventDefault();
+                        window.location.href = href + 'index.html';
+                    }
+                }
+            }
+        }
+    }, true);
+
+    // ------------------------------------------------------------------
     // Mobile Interactions: Navigation, Submenus & Offcanvas Popups
     // ------------------------------------------------------------------
     function initMobileNav() {
