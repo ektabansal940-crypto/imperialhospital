@@ -338,12 +338,12 @@ document.addEventListener('click', function(e) {
     }
 });
 
-        // 2. Mobile Submenu Toggle (e.g. Doctors dropdown)
+        // 2. Mobile Submenu Toggle (e.g. Specialist and nested specialty dropdowns)
         document.addEventListener('click', function(e) {
             var itemWithChildren = e.target.closest('.wpr-mobile-nav-menu .menu-item-has-children > a');
             if (itemWithChildren) {
                 var parentLi = itemWithChildren.closest('.menu-item-has-children');
-                var subMenu = parentLi ? parentLi.querySelector('.sub-menu, .wpr-sub-menu') : itemWithChildren.nextElementSibling;
+                var subMenu = parentLi ? (parentLi.querySelector(':scope > .sub-menu, :scope > .wpr-sub-menu') || itemWithChildren.nextElementSibling) : itemWithChildren.nextElementSibling;
                 if (subMenu) {
                     e.preventDefault();
                     e.stopPropagation();

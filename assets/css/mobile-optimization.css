@@ -4518,3 +4518,77 @@ body:has(.wpr-offcanvas-wrap-active) .wpr-stt-btn {
         box-sizing: border-box !important;
     }
 }
+
+
+/* ================================================================
+   MULTI-LEVEL NAVIGATION SUBMENU (DESKTOP & MOBILE) FOR SPECIALIST
+   ================================================================ */
+
+@media (min-width: 1025px) {
+    .wpr-nav-menu .wpr-sub-menu {
+        min-width: 230px !important;
+        background: #ffffff !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+        border-radius: 4px !important;
+        padding: 6px 0 !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu li {
+        position: relative !important;
+        width: 100% !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu .menu-item-has-children > a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding-right: 18px !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu .menu-item-has-children > a .wpr-sub-icon {
+        margin-left: auto !important;
+        padding-left: 10px !important;
+        transform: rotate(-90deg) !important;
+        font-size: 11px !important;
+        opacity: 0.65;
+    }
+    .wpr-nav-menu .wpr-sub-menu .wpr-sub-menu {
+        top: 0 !important;
+        left: 100% !important;
+        display: none !important;
+        border-top: none !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu li.menu-item-has-children:hover > .wpr-sub-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .wpr-mobile-nav-menu .menu-item-has-children > a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+    .wpr-mobile-nav-menu .menu-item-has-children > a .wpr-sub-icon {
+        margin-left: auto !important;
+        padding-left: 8px !important;
+        transition: transform 0.25s ease !important;
+    }
+    .wpr-mobile-nav-menu .menu-item-has-children.wpr-sub-open > a > .wpr-sub-icon {
+        transform: rotate(180deg) !important;
+    }
+    .wpr-mobile-nav-menu .sub-menu .sub-menu {
+        background: #f1f5f9 !important;
+        border-left: 3px solid #EF7B00 !important;
+        padding: 4px 0 !important;
+        display: none !important;
+    }
+    .wpr-mobile-nav-menu .sub-menu .sub-menu.wpr-sub-open,
+    .wpr-mobile-nav-menu .sub-menu .sub-menu.active {
+        display: block !important;
+    }
+    .wpr-mobile-nav-menu .sub-menu .sub-menu li a {
+        padding-left: 36px !important;
+        font-size: 13.5px !important;
+        color: #334155 !important;
+    }
+}
