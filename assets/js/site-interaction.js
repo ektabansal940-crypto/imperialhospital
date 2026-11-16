@@ -314,12 +314,12 @@ document.addEventListener('click', function(e) {
     }
 });
 
-        // 2. Mobile Submenu Toggle (e.g. Doctors dropdown)
+        // 2. Mobile Submenu Toggle (e.g. Doctors dropdown and Specialty submenus)
         document.addEventListener('click', function(e) {
             var itemWithChildren = e.target.closest('.wpr-mobile-nav-menu .menu-item-has-children > a');
             if (itemWithChildren) {
                 var parentLi = itemWithChildren.closest('.menu-item-has-children');
-                var subMenu = parentLi ? parentLi.querySelector('.sub-menu, .wpr-sub-menu') : itemWithChildren.nextElementSibling;
+                var subMenu = itemWithChildren.nextElementSibling || (parentLi ? (parentLi.querySelector(':scope > .sub-menu, :scope > .wpr-sub-menu') || parentLi.querySelector('.sub-menu, .wpr-sub-menu')) : null);
                 if (subMenu) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -344,8 +344,10 @@ document.addEventListener('click', function(e) {
                 e.preventDefault();
                 var wrap = document.querySelector('.wpr-offcanvas-wrap');
                 if (wrap) {
-                    wrap.classList.add('wpr-offcanvas-open');
+                    wrap.classList.add('wpr-offcanvas-open', 'wpr-offcanvas-wrap-active');
                     wrap.style.display = 'block';
+                    document.body.classList.add('wpr-offcanvas-body-overflow');
+                    document.documentElement.classList.add('wpr-offcanvas-body-overflow');
                 }
             }
 
@@ -354,15 +356,32 @@ document.addEventListener('click', function(e) {
                 e.preventDefault();
                 var wrap = document.querySelector('.wpr-offcanvas-wrap');
                 if (wrap) {
-                    wrap.classList.remove('wpr-offcanvas-open');
+                    wrap.classList.remove('wpr-offcanvas-open', 'wpr-offcanvas-wrap-active');
                     wrap.style.display = 'none';
+                    document.body.classList.remove('wpr-offcanvas-body-overflow');
+                    document.documentElement.classList.remove('wpr-offcanvas-body-overflow');
                 }
             }
 
             // Close on backdrop click
             if (e.target.classList.contains('wpr-offcanvas-wrap')) {
-                e.target.classList.remove('wpr-offcanvas-open');
+                e.target.classList.remove('wpr-offcanvas-open', 'wpr-offcanvas-wrap-active');
                 e.target.style.display = 'none';
+                document.body.classList.remove('wpr-offcanvas-body-overflow');
+                document.documentElement.classList.remove('wpr-offcanvas-body-overflow');
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keyup', function(e) {
+            if (e.key === 'Escape') {
+                var wrap = document.querySelector('.wpr-offcanvas-wrap');
+                if (wrap && (wrap.classList.contains('wpr-offcanvas-open') || wrap.classList.contains('wpr-offcanvas-wrap-active'))) {
+                    wrap.classList.remove('wpr-offcanvas-open', 'wpr-offcanvas-wrap-active');
+                    wrap.style.display = 'none';
+                    document.body.classList.remove('wpr-offcanvas-body-overflow');
+                    document.documentElement.classList.remove('wpr-offcanvas-body-overflow');
+                }
             }
         });
 

@@ -1361,24 +1361,65 @@
 }
 
 /* --------------------------------------------------------------------------
-   8. OFFCANVAS APPOINTMENT POPUP (<= 767px)
+   8. OFFCANVAS APPOINTMENT POPUP (<= 1024px)
    -------------------------------------------------------------------------- */
-@media screen and (max-width: 767px) {
+/* Prevent body & background page scrolling when appointment popup is open */
+html.wpr-offcanvas-body-overflow,
+body.wpr-offcanvas-body-overflow {
+    overflow: hidden !important;
+    height: 100% !important;
+    touch-action: none !important;
+}
+
+/* When appointment popup is open, elevate top bar and widget strictly above the main header */
+body.wpr-offcanvas-body-overflow .elementor-element-1fc2745,
+html body.wpr-offcanvas-body-overflow .elementor-element-1fc2745,
+body:has(.wpr-offcanvas-wrap-active) .elementor-element-1fc2745,
+body:has(.wpr-offcanvas-open) .elementor-element-1fc2745 {
+    position: relative !important;
+    z-index: 99999999 !important;
+}
+
+body.wpr-offcanvas-body-overflow .elementor-element-fce18a9,
+html body.wpr-offcanvas-body-overflow .elementor-element-fce18a9,
+body:has(.wpr-offcanvas-wrap-active) .elementor-element-fce18a9,
+body:has(.wpr-offcanvas-open) .elementor-element-fce18a9 {
+    position: relative !important;
+    z-index: 99999999 !important;
+}
+
+/* Ensure the main header bar (logo & hamburger) drops below the appointment modal and backdrop */
+body.wpr-offcanvas-body-overflow .elementor-element-3cadbe5,
+html body.wpr-offcanvas-body-overflow .elementor-element-3cadbe5,
+body:has(.wpr-offcanvas-wrap-active) .elementor-element-3cadbe5,
+body:has(.wpr-offcanvas-open) .elementor-element-3cadbe5 {
+    z-index: 1 !important;
+}
+
+@media screen and (max-width: 1024px) {
     .wpr-offcanvas-wrap {
         position: fixed !important;
         inset: 0 !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
         background-color: rgba(0, 0, 0, 0.6) !important;
-        z-index: 9999999 !important;
+        z-index: 99999999 !important;
         display: none;
         opacity: 0;
         transition: opacity 0.3s ease;
+        overscroll-behavior: contain !important;
     }
-    .wpr-offcanvas-wrap.wpr-offcanvas-open {
+
+    .wpr-offcanvas-wrap.wpr-offcanvas-open,
+    .wpr-offcanvas-wrap.wpr-offcanvas-wrap-active {
         display: block !important;
         opacity: 1 !important;
     }
+
     .wpr-offcanvas-content {
         position: fixed !important;
         top: 0 !important;
@@ -1390,13 +1431,31 @@
         box-shadow: -5px 0 25px rgba(0,0,0,0.2) !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 20px 16px 40px 16px !important;
+        overscroll-behavior: contain !important;
+        padding: 10px 16px 40px 16px !important;
         transform: translateX(100%);
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        z-index: 99999999 !important;
+        box-sizing: border-box !important;
     }
-    .wpr-offcanvas-wrap.wpr-offcanvas-open .wpr-offcanvas-content {
+
+    .wpr-offcanvas-wrap.wpr-offcanvas-open .wpr-offcanvas-content,
+    .wpr-offcanvas-wrap.wpr-offcanvas-wrap-active .wpr-offcanvas-content {
         transform: translateX(0) !important;
     }
+
+    .wpr-offcanvas-header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 10 !important;
+        background: #ffffff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        padding: 8px 0 !important;
+        margin-bottom: 5px !important;
+    }
+
     .wpr-close-offcanvas {
         display: inline-flex !important;
         align-items: center !important;
@@ -1408,6 +1467,7 @@
         background: #f1f5f9 !important;
         border-radius: 50% !important;
         color: #333333 !important;
+        border: none !important;
     }
 }
 
@@ -3543,5 +3603,79 @@
 
     body.elementor-page-8 .elementor-widget-wpr-promo-box {
         margin-top: -30px !important;
+    }
+}
+
+
+/* ================================================================
+   MULTI-LEVEL NAVIGATION SUBMENU (DESKTOP & MOBILE)
+   ================================================================ */
+
+@media (min-width: 1025px) {
+    .wpr-nav-menu .wpr-sub-menu {
+        min-width: 230px !important;
+        background: #ffffff !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+        border-radius: 4px !important;
+        padding: 6px 0 !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu li {
+        position: relative !important;
+        width: 100% !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu .menu-item-has-children > a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding-right: 18px !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu .menu-item-has-children > a .wpr-sub-icon {
+        margin-left: auto !important;
+        padding-left: 10px !important;
+        transform: rotate(-90deg) !important;
+        font-size: 11px !important;
+        opacity: 0.65;
+    }
+    .wpr-nav-menu .wpr-sub-menu .wpr-sub-menu {
+        top: 0 !important;
+        left: 100% !important;
+        display: none !important;
+        border-top: none !important;
+    }
+    .wpr-nav-menu .wpr-sub-menu li.menu-item-has-children:hover > .wpr-sub-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .wpr-mobile-nav-menu .menu-item-has-children > a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+    .wpr-mobile-nav-menu .menu-item-has-children > a .wpr-sub-icon {
+        margin-left: auto !important;
+        padding-left: 8px !important;
+        transition: transform 0.25s ease !important;
+    }
+    .wpr-mobile-nav-menu .menu-item-has-children.wpr-sub-open > a > .wpr-sub-icon {
+        transform: rotate(180deg) !important;
+    }
+    .wpr-mobile-nav-menu .sub-menu .sub-menu {
+        background: #f1f5f9 !important;
+        border-left: 3px solid #605be5 !important;
+        padding: 4px 0 !important;
+        display: none !important;
+    }
+    .wpr-mobile-nav-menu .sub-menu .sub-menu.wpr-sub-open,
+    .wpr-mobile-nav-menu .sub-menu .sub-menu.active {
+        display: block !important;
+    }
+    .wpr-mobile-nav-menu .sub-menu .sub-menu li a {
+        padding-left: 36px !important;
+        font-size: 13.5px !important;
+        color: #334155 !important;
     }
 }
