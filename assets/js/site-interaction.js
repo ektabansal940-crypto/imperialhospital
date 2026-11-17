@@ -273,6 +273,8 @@
                 menu.classList.remove('wpr-menu-open', 'active');
                 menu.style.display = 'none';
                 menu.style.height = '';
+                menu.style.left = '';
+                menu.style.width = '';
                 toggleWrap.classList.remove('wpr-active-toggle');
                 if (toggleInner) {
                     toggleInner.classList.remove('wpr-active-toggle');
@@ -283,6 +285,8 @@
                 menu.classList.add('wpr-menu-open', 'active');
                 menu.style.display = 'block';
                 menu.style.height = 'auto';
+                menu.style.left = '';
+                menu.style.width = '';
                 toggleWrap.classList.add('wpr-active-toggle');
                 if (toggleInner) {
                     toggleInner.classList.add('wpr-active-toggle');
