@@ -1079,7 +1079,9 @@
         list-style: none !important;
     }
 
-    html body .elementor-element-17d3e10 .elementor-icon-list-item > a {
+    html body .elementor-element-17d3e10 .elementor-icon-list-item > a,
+    html body .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body .elementor-312 .elementor-element.elementor-element-17d3e10 .elementor-icon-list-item > .elementor-icon-list-text {
         display: inline-flex !important;
         align-items: center !important;
         gap: 5px !important;
@@ -3055,6 +3057,9 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
         margin: 0 !important;
     }
 
+    html body .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body.home .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body.elementor-page-871 .elementor-element-17d3e10 .elementor-icon-list-text,
     html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-text,
     html body:not(.elementor-page-871) .elementor-element-17d3e10 .elementor-icon-list-text {
         font-family: "Poppins", sans-serif !important;
@@ -3914,7 +3919,13 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     }
 
     html body .elementor-element-17d3e10 .elementor-icon-list-item > a,
-    html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-item > a {
+    html body .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body.home .elementor-element-17d3e10 .elementor-icon-list-item > a,
+    html body.home .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body.elementor-page-871 .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body .elementor-312 .elementor-element.elementor-element-17d3e10 .elementor-icon-list-item > .elementor-icon-list-text,
+    html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-item > a,
+    html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-text {
         font-size: clamp(8px, 2.1vw, 9.5px) !important;
         color: #ffffff !important;
         display: inline-flex !important;
@@ -3982,7 +3993,13 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     }
 
     html body .elementor-element-17d3e10 .elementor-icon-list-item > a,
-    html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-item > a {
+    html body .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body.home .elementor-element-17d3e10 .elementor-icon-list-item > a,
+    html body.home .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body.elementor-page-871 .elementor-element-17d3e10 .elementor-icon-list-text,
+    html body .elementor-312 .elementor-element.elementor-element-17d3e10 .elementor-icon-list-item > .elementor-icon-list-text,
+    html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-item > a,
+    html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-text {
         font-size: 8px !important;
         white-space: nowrap !important;
         max-width: 100% !important;
