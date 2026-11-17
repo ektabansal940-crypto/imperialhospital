@@ -1108,11 +1108,22 @@
     }
 
     /* Ensure header container is relative with high z-index and no clipping */
+    html body .elementor.elementor-312,
+    .elementor.elementor-312 {
+        position: relative !important;
+        z-index: 9999999 !important;
+    }
+
+    body.wpr-mobile-menu-active .elementor.elementor-312,
+    html body.wpr-mobile-menu-active .elementor.elementor-312 {
+        z-index: 99999999 !important;
+    }
+
     html body .elementor-element-3cadbe5,
     html body .elementor-element-3cadbe5.e-parent,
     html body .elementor-element-3cadbe5.e-con {
         position: relative !important;
-        z-index: 999999 !important;
+        z-index: 9999999 !important;
         overflow: visible !important;
         padding: 6px 16px !important;
         margin: 0 !important;
@@ -1403,7 +1414,11 @@ body:has(.wpr-offcanvas-open) .elementor-element-fce18a9 {
 body.wpr-offcanvas-body-overflow .elementor-element-3cadbe5,
 html body.wpr-offcanvas-body-overflow .elementor-element-3cadbe5,
 body:has(.wpr-offcanvas-wrap-active) .elementor-element-3cadbe5,
-body:has(.wpr-offcanvas-open) .elementor-element-3cadbe5 {
+body:has(.wpr-offcanvas-open) .elementor-element-3cadbe5,
+body.wpr-offcanvas-body-overflow .elementor.elementor-312,
+html body.wpr-offcanvas-body-overflow .elementor.elementor-312,
+body:has(.wpr-offcanvas-wrap-active) .elementor.elementor-312,
+body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     z-index: 1 !important;
 }
 
@@ -3972,11 +3987,22 @@ body:has(.wpr-offcanvas-open) .elementor-element-3cadbe5 {
         display: none !important;
     }
 
+    html body .elementor.elementor-312,
+    .elementor.elementor-312 {
+        position: relative !important;
+        z-index: 9999999 !important;
+    }
+
+    body.wpr-mobile-menu-active .elementor.elementor-312,
+    html body.wpr-mobile-menu-active .elementor.elementor-312 {
+        z-index: 99999999 !important;
+    }
+
     html body .elementor-element-3cadbe5,
     html body .elementor-element-3cadbe5.e-parent,
     html body .elementor-element-3cadbe5.e-con {
         position: relative !important;
-        z-index: 999999 !important;
+        z-index: 9999999 !important;
         overflow: visible !important;
         padding: 6px 16px !important;
         margin: 0 !important;
