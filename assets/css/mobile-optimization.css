@@ -923,7 +923,7 @@
     html body .elementor.elementor-312 .elementor-element-1fc2745 > .elementor-container,
     html body .elementor-element-1fc2745 > .elementor-container {
         display: grid !important;
-        grid-template-columns: 1fr auto !important;
+        grid-template-columns: auto minmax(0, 1fr) !important;
         row-gap: 5px !important;
         column-gap: 8px !important;
         align-items: center !important;
@@ -1243,10 +1243,10 @@
         bottom: auto !important;
         left: auto !important;
         right: auto !important;
-        width: calc(100% + 32px) !important;
-        max-width: calc(100% + 32px) !important;
-        margin-left: -16px !important;
-        margin-right: -16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         background: #ffffff !important;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
         z-index: 100 !important;
@@ -2839,7 +2839,7 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     html body:not(.elementor-page-871) .elementor.elementor-312 .elementor-element-1fc2745 > .elementor-container,
     html body:not(.elementor-page-871) .elementor-element-1fc2745 > .elementor-container {
         display: grid !important;
-        grid-template-columns: 1fr auto !important;
+        grid-template-columns: auto minmax(0, 1fr) !important;
         row-gap: 5px !important;
         column-gap: 8px !important;
         align-items: center !important;
@@ -3800,7 +3800,7 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     html body .elementor-element-1fc2745 {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 6px 12px !important;
+        padding: 6px 10px !important;
         margin: 0 !important;
         background-color: #0A1C43 !important;
         box-sizing: border-box !important;
@@ -3812,9 +3812,9 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     html body:not(.home) .elementor.elementor-312 .elementor-element-1fc2745 > .elementor-container,
     html body:not(.home) .elementor-element-1fc2745 > .elementor-container {
         display: grid !important;
-        grid-template-columns: 1fr auto !important;
+        grid-template-columns: auto minmax(0, 1fr) !important;
         row-gap: 5px !important;
-        column-gap: 6px !important;
+        column-gap: 8px !important;
         align-items: center !important;
         width: 100% !important;
         max-width: 100% !important;
@@ -3869,9 +3869,9 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
         background-color: #EF7B00 !important;
         color: #ffffff !important;
         font-family: "Poppins", sans-serif !important;
-        font-size: 11px !important;
+        font-size: clamp(10px, 2.6vw, 11px) !important;
         font-weight: 600 !important;
-        padding: 5px 12px !important;
+        padding: 4px 10px !important;
         border-radius: 4px !important;
         white-space: nowrap !important;
     }
@@ -3891,7 +3891,7 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
 
     html body .elementor-element-81da487 .elementor-icon-list-item > a,
     html body:not(.home) .elementor-element-81da487 .elementor-icon-list-item > a {
-        font-size: clamp(10px, 2.7vw, 11.5px) !important;
+        font-size: clamp(9.5px, 2.6vw, 11px) !important;
         color: #ffffff !important;
         display: inline-flex !important;
         align-items: center !important;
@@ -3910,16 +3910,18 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
         display: inline-flex !important;
         visibility: visible !important;
         align-items: center !important;
+        max-width: 100% !important;
     }
 
     html body .elementor-element-17d3e10 .elementor-icon-list-item > a,
     html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-item > a {
-        font-size: clamp(9.5px, 2.6vw, 11px) !important;
+        font-size: clamp(8.5px, 2.4vw, 10.5px) !important;
         color: #ffffff !important;
         display: inline-flex !important;
         align-items: center !important;
         gap: 4px !important;
         white-space: nowrap !important;
+        max-width: 100% !important;
     }
 }
 
@@ -4109,10 +4111,10 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
         bottom: auto !important;
         left: auto !important;
         right: auto !important;
-        width: calc(100% + 32px) !important;
-        max-width: calc(100% + 32px) !important;
-        margin-left: -16px !important;
-        margin-right: -16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         background: #ffffff !important;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
         z-index: 100 !important;
