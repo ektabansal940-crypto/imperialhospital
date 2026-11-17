@@ -3925,7 +3925,7 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     }
 }
 
-/* SMALL MOBILE TOP BAR (<= 360px) */
+/* SMALL MOBILE TOP BAR (<= 360px): Keeps the exact same 2-row position on small devices */
 @media screen and (max-width: 360px) {
     html body .elementor.elementor-312 .elementor-element-1fc2745,
     html body .elementor-element-1fc2745 {
@@ -3936,41 +3936,56 @@ body:has(.wpr-offcanvas-open) .elementor.elementor-312 {
     html body .elementor-element-1fc2745 > .elementor-container,
     html body:not(.home) .elementor.elementor-312 .elementor-element-1fc2745 > .elementor-container,
     html body:not(.home) .elementor-element-1fc2745 > .elementor-container {
-        grid-template-columns: 1fr 1fr !important;
+        display: grid !important;
+        grid-template-columns: auto minmax(0, 1fr) !important;
         row-gap: 4px !important;
+        column-gap: 6px !important;
     }
 
     html body .elementor-element-00e3896,
     html body:not(.home) .elementor-element-00e3896 {
         grid-column: 1 !important;
         grid-row: 1 !important;
+        justify-self: start !important;
     }
 
     html body .elementor-element-fce18a9,
     html body:not(.home) .elementor-element-fce18a9 {
         grid-column: 2 !important;
         grid-row: 1 !important;
+        justify-self: end !important;
+    }
+
+    html body .elementor-element-fce18a9 .wpr-offcanvas-trigger {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
     }
 
     html body .elementor-element-81da487,
     html body:not(.home) .elementor-element-81da487 {
-        grid-column: 1 / -1 !important;
+        grid-column: 1 !important;
         grid-row: 2 !important;
         justify-self: start !important;
     }
 
     html body .elementor-element-17d3e10,
     html body:not(.home) .elementor-element-17d3e10 {
-        grid-column: 1 / -1 !important;
-        grid-row: 3 !important;
-        justify-self: start !important;
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        justify-self: end !important;
+        max-width: 100% !important;
     }
 
     html body .elementor-element-81da487 .elementor-icon-list-item > a,
+    html body:not(.home) .elementor-element-81da487 .elementor-icon-list-item > a {
+        font-size: 9.5px !important;
+    }
+
     html body .elementor-element-17d3e10 .elementor-icon-list-item > a,
-    html body:not(.home) .elementor-element-81da487 .elementor-icon-list-item > a,
     html body:not(.home) .elementor-element-17d3e10 .elementor-icon-list-item > a {
-        font-size: 10.5px !important;
+        font-size: 8.5px !important;
+        white-space: nowrap !important;
+        max-width: 100% !important;
     }
 }
 
@@ -4577,6 +4592,13 @@ body:has(.wpr-offcanvas-wrap-active) .wpr-stt-btn {
 /* ================================================================
    MULTI-LEVEL NAVIGATION SUBMENU (DESKTOP & MOBILE) FOR SPECIALIST
    ================================================================ */
+
+/* Second-level Submenu (Doctor Names): Always opens to the right across all devices */
+.wpr-nav-menu .wpr-sub-menu .wpr-sub-menu {
+    top: 0 !important;
+    left: 100% !important;
+    right: auto !important;
+}
 
 @media (min-width: 1025px) {
     .wpr-nav-menu .wpr-sub-menu {
