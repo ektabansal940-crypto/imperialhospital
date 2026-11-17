@@ -243,138 +243,78 @@
     // Mobile Interactions: Navigation, Submenus & Offcanvas Popups
     // ------------------------------------------------------------------
     function initMobileNav() {
-        // 1. Mobile Menu 3-Lines Hamburger Toggle
-        /*document.addEventListener('click', function(e) {
+        // 1. Mobile Menu 3-Lines Hamburger Toggle (Capture Phase to prevent third-party collapse)
+        document.addEventListener('click', function(e) {
             var toggle = e.target.closest('.wpr-mobile-toggle, .wpr-mobile-toggle-wrap');
-            if (toggle) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                var headerEl = toggle.closest('.elementor-element-3cadbe5, .elementor-widget-wpr-nav-menu, .wpr-mobile-nav-menu-container') || document;
-                var menu = headerEl.querySelector('.wpr-mobile-nav-menu') || document.querySelector('.wpr-mobile-nav-menu');
-                var toggleWrap = toggle.closest('.wpr-mobile-toggle-wrap') || toggle;
-                var toggleInner = toggle.classList.contains('wpr-mobile-toggle') ? toggle : toggle.querySelector('.wpr-mobile-toggle');
-
-                if (menu) {
-                    var isCurrentlyOpen = menu.classList.contains('wpr-menu-open') || menu.style.display === 'block';
-
-                    if (isCurrentlyOpen) {
-                        menu.classList.remove('wpr-menu-open', 'active');
-                        menu.style.display = 'none';
-                        if (toggleWrap) toggleWrap.classList.remove('wpr-active-toggle');
-                        if (toggleInner) toggleInner.classList.remove('wpr-active-toggle');
-                        document.body.classList.remove('wpr-mobile-menu-active');
-                    } else {
-                        menu.classList.add('wpr-menu-open', 'active');
-                        menu.style.display = 'block';
-                        if (toggleWrap) toggleWrap.classList.add('wpr-active-toggle');
-                        if (toggleInner) toggleInner.classList.add('wpr-active-toggle');
-                        document.body.classList.add('wpr-mobile-menu-active');
-                    }
-                }
+            if (!toggle) {
                 return;
             }
 
-            // Close menu if clicked outside
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            var toggleWrap = toggle.closest('.wpr-mobile-toggle-wrap') || toggle;
+            var toggleInner = toggle.classList.contains('wpr-mobile-toggle')
+                ? toggle
+                : toggle.querySelector('.wpr-mobile-toggle');
+
+            // Find the mobile menu
+            var container = toggle.closest('.wpr-mobile-nav-menu-container') || toggle.closest('.elementor-widget-wpr-nav-menu') || document;
+            var menu = container.querySelector('.wpr-mobile-nav-menu') || document.querySelector('.wpr-mobile-nav-menu');
+
+            if (!menu) {
+                return;
+            }
+
+            var isOpen = menu.classList.contains('wpr-menu-open') || menu.style.display === 'block';
+
+            if (isOpen) {
+                // CLOSE
+                menu.classList.remove('wpr-menu-open', 'active');
+                menu.style.display = 'none';
+                menu.style.height = '';
+                toggleWrap.classList.remove('wpr-active-toggle');
+                if (toggleInner) {
+                    toggleInner.classList.remove('wpr-active-toggle');
+                }
+                document.body.classList.remove('wpr-mobile-menu-active');
+            } else {
+                // OPEN
+                menu.classList.add('wpr-menu-open', 'active');
+                menu.style.display = 'block';
+                menu.style.height = 'auto';
+                toggleWrap.classList.add('wpr-active-toggle');
+                if (toggleInner) {
+                    toggleInner.classList.add('wpr-active-toggle');
+                }
+                document.body.classList.add('wpr-mobile-menu-active');
+            }
+        }, true);
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
             if (!e.target.closest('.wpr-mobile-nav-menu, .wpr-mobile-nav-menu-container, .wpr-mobile-toggle-wrap, .wpr-mobile-toggle')) {
-                var openMenus = document.querySelectorAll('.wpr-mobile-nav-menu.wpr-menu-open, .wpr-mobile-nav-menu[style*="display: block"]');
-                if (openMenus.length > 0) {
-                    openMenus.forEach(function(m) {
-                        m.classList.remove('wpr-menu-open', 'active');
-                        m.style.display = 'none';
-                    });
+                var menu = document.querySelector('.wpr-mobile-nav-menu.wpr-menu-open, .wpr-mobile-nav-menu[style*="display: block"]');
+                if (menu) {
+                    menu.classList.remove('wpr-menu-open', 'active');
+                    menu.style.display = 'none';
+                    menu.style.height = '';
                     document.querySelectorAll('.wpr-active-toggle').forEach(function(t) {
                         t.classList.remove('wpr-active-toggle');
                     });
                     document.body.classList.remove('wpr-mobile-menu-active');
                 }
             }
-        });*/
+        });
 
-
-        // 1. Mobile Menu 3-Lines Hamburger Toggle
-document.addEventListener('click', function(e) {
-
-    var toggle = e.target.closest(
-        '.wpr-mobile-toggle, .wpr-mobile-toggle-wrap'
-    );
-
-    if (!toggle) {
-        return;
-    }
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    var toggleWrap = toggle.closest('.wpr-mobile-toggle-wrap') || toggle;
-
-    var toggleInner = toggle.classList.contains('wpr-mobile-toggle')
-        ? toggle
-        : toggle.querySelector('.wpr-mobile-toggle');
-
-    // Find the mobile menu
-    var menu = document.querySelector('.wpr-mobile-nav-menu');
-
-    if (!menu) {
-        console.warn('Mobile menu not found');
-        return;
-    }
-
-    var isOpen = menu.classList.contains('wpr-menu-open');
-
-    if (isOpen) {
-
-        // CLOSE
-        menu.classList.remove('wpr-menu-open', 'active');
-        menu.style.display = 'none';
-
-        toggleWrap.classList.remove('wpr-active-toggle');
-
-        if (toggleInner) {
-            toggleInner.classList.remove('wpr-active-toggle');
-        }
-
-        document.body.classList.remove('wpr-mobile-menu-active');
-
-    } else {
-
-        // OPEN
-        menu.classList.add('wpr-menu-open', 'active');
-        menu.style.display = 'block';
-
-        toggleWrap.classList.add('wpr-active-toggle');
-
-        if (toggleInner) {
-            toggleInner.classList.add('wpr-active-toggle');
-        }
-
-        document.body.classList.add('wpr-mobile-menu-active');
-    }
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.wpr-mobile-nav-menu, .wpr-mobile-nav-menu-container, .wpr-mobile-toggle-wrap, .wpr-mobile-toggle')) {
-        var menu = document.querySelector('.wpr-mobile-nav-menu.wpr-menu-open, .wpr-mobile-nav-menu[style*="display: block"]');
-        if (menu) {
-            menu.classList.remove('wpr-menu-open', 'active');
-            menu.style.display = 'none';
-            document.querySelectorAll('.wpr-active-toggle').forEach(function(t) {
-                t.classList.remove('wpr-active-toggle');
-            });
-            document.body.classList.remove('wpr-mobile-menu-active');
-        }
-    }
-});
-
-// Floating Scroll-To-Top Button Click
-document.addEventListener('click', function(e) {
-    var stt = e.target.closest('.wpr-stt-btn, .elementor-element-bbca014');
-    if (stt) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-});
+        // Floating Scroll-To-Top Button Click
+        document.addEventListener('click', function(e) {
+            var stt = e.target.closest('.wpr-stt-btn, .elementor-element-bbca014');
+            if (stt) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
 
         // 2. Mobile Submenu Toggle (e.g. Specialist and nested specialty dropdowns)
         document.addEventListener('click', function(e) {
@@ -384,20 +324,22 @@ document.addEventListener('click', function(e) {
                 var subMenu = parentLi ? (parentLi.querySelector(':scope > .sub-menu, :scope > .wpr-sub-menu') || itemWithChildren.nextElementSibling) : itemWithChildren.nextElementSibling;
                 if (subMenu) {
                     e.preventDefault();
-                    e.stopPropagation();
+                    e.stopImmediatePropagation();
                     var isSubOpen = subMenu.classList.contains('wpr-sub-open') || subMenu.style.display === 'block';
                     if (isSubOpen) {
                         subMenu.classList.remove('wpr-sub-open', 'active');
                         subMenu.style.display = 'none';
+                        subMenu.style.height = '';
                         if (parentLi) parentLi.classList.remove('wpr-sub-open');
                     } else {
                         subMenu.classList.add('wpr-sub-open', 'active');
                         subMenu.style.display = 'block';
+                        subMenu.style.height = 'auto';
                         if (parentLi) parentLi.classList.add('wpr-sub-open');
                     }
                 }
             }
-        });
+        }, true);
 
         // 3. Offcanvas Appointment Popup Toggle (Desktop & Mobile)
         document.addEventListener('click', function(e) {
