@@ -202,6 +202,32 @@
     }
 
     // ------------------------------------------------------------------
+    // Local Filesystem Direct Navigation Fix (file:// protocol)
+    // When opening pages locally via file://, directory URLs (e.g. 'dr-ajay-kenia/')
+    // show Chrome's directory index listing ("Index of...") requiring a second click.
+    // This intercepts clicks and loads that doctor/page's index.html directly
+    // in a single click, completely eliminating the intermediate directory screen.
+    // On web servers (http/https), directory links remain clean without .html.
+    // ------------------------------------------------------------------
+    document.addEventListener('click', function(e) {
+        if (window.location.protocol === 'file:') {
+            var link = e.target.closest('a[href]');
+            if (link) {
+                var href = link.getAttribute('href');
+                if (href && !href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('javascript:')) {
+                    if (href === './') {
+                        e.preventDefault();
+                        window.location.href = 'index.html';
+                    } else if (href.endsWith('/')) {
+                        e.preventDefault();
+                        window.location.href = href + 'index.html';
+                    }
+                }
+            }
+        }
+    }, true);
+
+    // ------------------------------------------------------------------
     // Clean URL Bar: Ensure 'index.html' never appears in the browser address bar
     // ------------------------------------------------------------------
     (function cleanUrlBar() {
